@@ -13,6 +13,7 @@ public class Tree {
         return this.root;
     }
 
+    // Counts the number of leaf nodes in the tree
     public int countLeafNodes() {
         if(root == null){
             return 0;
@@ -21,6 +22,7 @@ public class Tree {
         return length;
     }
 
+    // Helper function to recursively count the number of leaf nodes
     private int countLeafNodess(Node node) {
         if (node.left == null &&  node.right == null) {
             return 1;
@@ -35,6 +37,7 @@ public class Tree {
         return count;
     }
 
+    // Gets the length of the longest path from the root to a leaf node
     public int getMaxPathLength() {
         if(root ==null){
             return 0;
@@ -42,6 +45,7 @@ public class Tree {
         return getMaxPathLength(this.root);
     }
 
+    // Helper function to recursively get the maximum path length
     private int getMaxPathLength(Node node) {
         if (node.left == null &&  node.right == null) {
             return 0;
@@ -62,6 +66,7 @@ public class Tree {
         return maxPathLength + 1;
     }
 
+    // Adds a node with the given value as a child of the node with the given parent value
     public void addNodeWithValue(int valueToAdd, int parentValue) {
         Node parentNode = findNodeWithValue(this.root, parentValue);
         if (parentNode != null) {
@@ -73,6 +78,7 @@ public class Tree {
         }
     }
 
+    // Helper function to find the node with the given value
     private Node findNodeWithValue(Node node, int value) {
         if (node == null) {
             return null;
@@ -87,10 +93,12 @@ public class Tree {
         return findNodeWithValue(node.right, value);
     }
 
+    // Checks if two trees are equal (have the same structure and values)
     public static boolean areTreesEqual(Tree tree1, Tree tree2) {
         return areNodesEqual(tree1.getRoot(), tree2.getRoot());
     }
 
+    // Helper function to recursively check if two nodes are equal
     private static boolean areNodesEqual(Node node1, Node node2) {
         if (node1 == null && node2 == null) {
             return true;
